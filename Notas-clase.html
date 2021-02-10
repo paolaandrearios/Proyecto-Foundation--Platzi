@@ -1,0 +1,209 @@
+<!-- 
+
+site Foundation: https://get.foundation/
+Repositorio: https://github.com/platzi/foundation
+proyecto: https://sachalifs.github.io/tattly/
+
+Curso Single Page con Foundation, SASS y Gulp: Creando el Proyecto: 
+https://www.youtube.com/watch?v=vS1XT5AAcfo
+
+Que es un Frameworks Frontend
+
+También conocidos como Frameworks CSS
+Son una base para empezar un proyecto web permitiendo flexibilidad en el diseño
+Organización y estructura de nuestro HTML. CSS, y JS
+Que trae un Frameworks Frontend
+
+Grilla
+Estilos para las fuentes
+Componentes visuales pre-armados
+Para que quiero usar un Frameworks Frontend
+
+Ahorrar tiempo
+Componentes visuales
+Responsive design
+El código anda
+Ejemplos de un Frameworks Frontend
+
+Bootstrap
+Foundation
+Bulma
+Flexbox grid
+
+Aquí dejo los encales de los otros frameworks que menciono Sacha
+https://bulma.io/
+http://flexboxgrid.com/
+
+************
+Instalación de Foundation
+
+Si no pueden instalar el CLI porque da el error primordials is not defined necesitan usar una versión anterior de node, para eso pueden utilizar nvm.
+
+Para instalarlo en Mac o linux correr el comando:
+
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+Reiniciar la terminal
+
+source ~/.bashrc # o source ~/.zshrc
+Para utilizar nvm
+nvm install v10.19.0
+nvm use v10.19.0
+Después de ésto ya debería funcionar
+
+foundation new
+
+******************************
+NOTA:
+
+Para iniciar el proyecto, con consola, nos ubicamos en la carpeta del proyecto, colocamos "foundation new", escogemos sitio web y le colocamos el nombre al proyecto, posteriormente se escoge el template zurb para que se instale la plantilla al proyecto y finalmente se accede a la carpeta del proyecto y se coloca en la consola "npm start" para empezar el proyecto.
+
+************************
+
+Para instalar foundation hay una incompatibilidad con la versión de node.js, por lo tanto se debe trabajar con una versión anterior, para instalarla se debe descargar nvm (node version manage).
+
+Para windows:
+.
+Descargar nvm https://github.com/coreybutler/nvm-windows/releases
+Abrir la consola de node y descargar node 10.23.0
+
+nvm install 10.23.0
+
+Cambiar de version de node 😃
+
+nvm use 10.23.0     (con "nvm use" se escoge en que versión se desea trabajar)
+
+
+El motivo del error “primordials is not defined” al ejecutar foundation new es porque la versión de Node.js no es compatible.
+La versión más actual compatibles es:
+v11.15.0 (x64)
+v11.15.0 (x86)
+NOTA: Se recomienda utilizar la consola de Node para navegar por las opciones de foundation al inizializar el proyecto (con la consola de Git no me lo permitía)
+
+*********
+NOTA:
+para entrar al proyecto de foundation e inicializarlo, se accede a la carpeta por la terminal y se coloca "npm start"
+
+*************
+
+Incorporando los iconos de Foundation
+
+Los estilos que incluyen los iconos de Foundation no vienen incorporados. Encuéntralos e instálalos en tus templates con esta guía paso a paso.
+
+https://zurb.com/playground/foundation-icon-fonts-3
+
+<i class="fi-heart"></i>
+
+*****************
+Paleta de colores: https://flatuicolors.com/
+
+*****************
+La nueva grilla XY de Foundation
+
+Una de las mejores funcionalidades de Foundation es su grilla. Descubre en qué impactan las últimas actualizaciones.
+
+Aprende a crear una grilla desde cero, así como a manejarla correctamente para diseños responsive.
+
+grid-x es la fila y los cell son las columnas, por predeterminación ocupan todo el ancho.
+Son mobile first por lo que a excepción que “pisemos” los estilos especificando cual será el comportamiento en “medium” y/o en “large” se comporta como una celda del ancho total.
+para establecer el ancho máximo se utiliza grid-container en un div contenedor.
+
+************
+Nota: Para iniciar un archivo html y no descargar foundation, se copian los CDN (https://get.foundation/sites/docs/installation.html) en la estructura del documento.
+
+*************
+{{> header}}  "partials"
+
+{{> }} "handlebars"
+
+********** 
+agregando listado de productos
+
+<div class="grid-x grid-margin-x grid-margin-y">
+    {{#repeat 25}}
+        <div class="cell small-6 medium-4 large-3 product">
+            <span class="label new">Nuevo</span>
+            <img class="normal" src="assets/img/products/resist.jpg" alt="Resist!">
+            <img class="hover" src="assets/img/products/resist_2.jpg" alt="Resist!">
+            <span class="label promo">
+                2 por $300 <i class="fi-shopping-cart"></i>
+            </span>
+        </div>
+    {{/repeat}}
+</div>
+<hr></hr>
+<div class="grid-x">
+    <div class="cell small-12 medium-3 medium-offset-9 text-right text-uppercase ">
+        <a class="button" href="#">Boton</a>
+    </div>
+</div>
+
+******************************
+
+Agregando un menú lateral off-canvas
+
+Off-canvas significa todo aquello que está fuera de tu visión, y Foundation tiene componentes para que incorpores elementos off-canvas de navegación.
+
+<<div class="off-canvas position-right" id="offCanvas" data-off-canvas>
+  {{> off-canvas}}
+</div>>
+Dentro del partial off-canvas
+
+<<ul class="vertical menu">
+  <li><a href="#">Perfil</a></li>
+  <li><a href="#">Mis rutas</a></li>
+  <li><a href="#">Mis huertas</a></li>
+  <li><a href="#">Mis recetas</a></li>
+  <li><a href="#">Contacto</a></li>
+  <li><a href="#">PQR</a></li>
+</ul>>
+
+++++++++++++++++++
+
+Foundation tiene componentes para que incorpores elementos off-canvas de navegación, Off-canvas significa todo aquello que está fuera de tu visión.
+
+Esto quiere decir que podemos hacer que aparezca un menú desplegable de forma lateral haciéndolo aparecer con un solo click. Por ejemplo un botón de menú o un burger button.
+
+https://get.foundation/sites/docs/off-canvas.html
+
+<body>
+  <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+   puedes meter el listado en html
+
+  </div>
+  <div class="off-canvas-content" data-off-canvas-content>
+
+    Puedes poner el codigo de todo el cuerpo o body de tu html  
+
+  </div>
+
+</body>
+position-left: puedes enviar la posición de tu menú desplegable ya sea en la sigientes posiciones: -left ; -right; -top ; -bottom.
+
+data-toggle=“offCanvas”: Este atributo debe ser añadido a la etiqueta que desee hacer la acción de aparecer el menú desplegable, Por ejemplo un botón de menú o un burger button.
+
+*******************************
+
+Agregar Smooth Navigation (smooth scroll)
+
+Tu sitio ya tiene todos los elementos que necesita, pero todavía puede mejorarse su navegación.
+
+En esta clase aprenderás a implementar el componente smooth navigation para generar interacciones más suaves y amenas para el usuario. También aprenderás a customizar este tipo de navegación de acuerdo a tu proyecto.
+
+******************
+subtree para crear una nueva rama para enviar a producción el proyecto.
+
+https://docs.github.com/en/github/using-git/about-git-subtree-merges
+
+*******************************
+
+Introducción a Foundation para Emails
+
+Hoy en día escribir emails a mano es un trabajo muy artesanal, no te permite usar CSS o tablas amigables. Es por eso que Foundation creó una versión especial de su framework para crear emails.
+
+El email sigue siendo una herramienta infalible para conquistar nuevos usuarios, ahora puedes usar un lenguaje súper sencillo integrado con Foundation para que tus tablas ya no se rompan y se vean perfectas en cualquier dispositivo.
+
+https://get.foundation/emails.html
+
+
+
+ -->
